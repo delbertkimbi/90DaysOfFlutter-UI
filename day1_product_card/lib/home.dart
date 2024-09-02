@@ -37,13 +37,22 @@ class _HomePageState extends State<HomePage> {
               Stack(
                 children: [
                   Container(
-                      height: 300,
-                      width: 250,
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        color: AppColors.cartForgroundColor,
-                        borderRadius: BorderRadius.circular(20),
-                      )),
+                    height: 307,
+                    width: 250,
+                    alignment: Alignment.topCenter,
+                    decoration: BoxDecoration(
+                      color: AppColors.cartBackgroundColor,
+                      border: Border.all(color: Colors.black38),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Container(
+                        height: 300,
+                        width: 250,
+                        decoration: BoxDecoration(
+                            color: AppColors.cartForgroundColor,
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: Colors.black38))),
+                  ),
                   Stack(
                     children: [
                       ClipRRect(
@@ -67,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   const Positioned(
-                    bottom: 110,
+                    bottom: 120,
                     right: 60,
                     child: Center(
                       child: Column(
@@ -97,12 +106,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const Positioned(
-                    bottom: 60,
+                    bottom: 80,
                     right: 10,
                     child: SizedBox(
-                      width: 230,
+                      width: 216,
                       child: Text(
-                        'Inspired by the original that debuted in 1985, the Air Jordan 1 Low offers a clean, classic look that\'s familiar yet always fresh. ',
+                        'Inspired by the original that debuted in 1985, the Air Jordan 1 Low offers a clean, classic look that\'s...',
                         style: TextStyle(
                             color: AppColors.backgroundColor,
                             fontSize: 11,
@@ -112,33 +121,43 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Positioned(
-                    bottom: 10,
-                    right: 20,
+                    bottom: 27,
+                    right: 25,
                     child: Container(
-                      height: 40,
-                      width: 200,
-                      margin: const EdgeInsets.only(right: 10),
-                      padding: const EdgeInsets.all(10),
+                      height: 45,
+                      padding: const EdgeInsets.all(0),
+                      alignment: Alignment.topCenter,
                       decoration: BoxDecoration(
-                        color: AppColors.backgroundColor,
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black38),
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: const Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.shopping_cart,
-                            color: Colors.white,
-                            size: 17,
-                          ),
-                          SizedBox(width: 45),
-                          Center(
-                              child: Text('Add to Cart',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                  )))
-                        ],
+                      child: Container(
+                        height: 40,
+                        width: 200,
+                        // margin: const EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: AppColors.backgroundColor,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/okay.png',
+                              height: 20,
+                              width: 20,
+                            ),
+                            const SizedBox(width: 45),
+                            const Center(
+                                child: Text('Add to Cart',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                    )))
+                          ],
+                        ),
                       ),
                     ),
                   ),
