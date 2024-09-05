@@ -1,20 +1,21 @@
-import 'package:day3_auth_app/sign_up.dart';
+import 'package:day3_auth_app/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SingUpPage extends StatefulWidget {
+  const SingUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SingUpPage> createState() => _SingUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SingUpPageState extends State<SingUpPage> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-
+    bool obsquarePassword = true;
+    bool checkBox = false;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: null,
@@ -73,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Center(
                   child: Text(
-                    'Login Page',
+                    'Sign-Up',
                     style: GoogleFonts.lato().copyWith(
                       color: const Color(0xff7A24A1),
                       fontSize: 22,
@@ -92,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                       width: width * .1,
                     ),
                     const Text(
-                      'Longin with',
+                      'Sign Up with',
                       style: TextStyle(
                         color: Color(0xff8894AC),
                         fontSize: 14,
@@ -199,48 +200,64 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: height * 0.01,
                 ),
-                TextField(
-                  obscureText: true,
-                  obscuringCharacter: '*',
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      hintText: 'Enter password',
-                      hintStyle: const TextStyle(
-                        color: Color(0xff868E96),
-                        fontSize: 14,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32),
-                        borderSide: const BorderSide(
-                          color: Color(0xff868E96),
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: const BorderSide(
-                          color: Color(0xff868E96),
-                        ),
-                      )),
+                _passwordField(obsquarePassword),
+                SizedBox(
+                  height: height * 0.015,
                 ),
+                _inputText(text: 'Confirm Password'),
                 SizedBox(
                   height: height * 0.01,
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                _passwordField(obsquarePassword),
+                SizedBox(
+                  height: height * 0.07,
+                ),
+                Row(
                   children: [
-                    Text(
-                      'Forgot Password?',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Color(0xffFC851C),
-                        fontWeight: FontWeight.w400,
-                      ),
+                    SizedBox(
+                      width: width * 0.0199,
                     ),
+                    Checkbox(
+                        value: checkBox,
+                        //  checkColor: Colors.white,
+                        focusColor: const Color(0xff7A24A1),
+                        activeColor: const Color(0xff7A24A1),
+                        onChanged: (newValeu) {
+                          setState(() {
+                            checkBox = !checkBox;
+                          });
+                        }),
+                    SizedBox(
+                      width: width * 0.0099,
+                    ),
+                    RichText(
+                        text: const TextSpan(
+                            text: 'Yes, I understand and agree to the ',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Color(0xff1A264E),
+                            ),
+                            children: [
+                          TextSpan(
+                            text: 'Privacy Policy\n',
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          TextSpan(text: 'and  '),
+                          TextSpan(
+                            text: 'Terms & Conditions',
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ]))
                   ],
                 ),
                 SizedBox(
-                  height: height * 0.07,
+                  height: height * 0.01,
                 ),
                 Container(
                   height: height * 0.065,
@@ -250,7 +267,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: const Color(0xff7A24A1),
                   ),
                   child: const Text(
-                    'Login',
+                    'SignUp',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -264,8 +281,8 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                   const  Text(
-                      'Don\'t have an account? ',
+                    Text(
+                      'Already have an account? ',
                       style: TextStyle(
                         fontSize: 14,
                         color: Color(0xff868E96),
@@ -274,12 +291,12 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     GestureDetector(
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const SingUpPage())),
-                      child:const  Text(
-                        'Sign up now ',
+                          builder: (context) => const LoginPage())),
+                      child: Text(
+                        'LogIn ',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Color(0xff7A24A1),
+                          color: Color(0xffFC851C),
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -291,6 +308,44 @@ class _LoginPageState extends State<LoginPage> {
           )
         ],
       ),
+    );
+  }
+
+  TextField _passwordField(bool obsquarePassword) {
+    return TextField(
+      obscureText: obsquarePassword,
+      obscuringCharacter: '*',
+      decoration: InputDecoration(
+          filled: true,
+          suffixIcon: IconButton(
+            color: const Color(0xffB8B5C3),
+            icon: Icon(
+              obsquarePassword ? Icons.visibility_off : Icons.visibility,
+            ),
+            onPressed: () {
+              setState(() {
+                obsquarePassword = !obsquarePassword;
+              });
+            },
+          ),
+          fillColor: Colors.white,
+          hintText: 'password',
+          hintStyle: const TextStyle(
+            color: Color(0xff868E96),
+            fontSize: 14,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(32),
+            borderSide: const BorderSide(
+              color: Color(0xff868E96),
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: const BorderSide(
+              color: Color(0xff868E96),
+            ),
+          )),
     );
   }
 
