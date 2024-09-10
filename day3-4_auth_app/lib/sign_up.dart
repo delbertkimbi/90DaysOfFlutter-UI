@@ -42,7 +42,7 @@ class _SingUpPageState extends State<SingUpPage> {
             ),
           ),
           Positioned(
-              top: height * 0.07,
+              top: height * 0.045,
               right: width * 0.054,
               child: Row(
                 children: [
@@ -65,7 +65,8 @@ class _SingUpPageState extends State<SingUpPage> {
                 ],
               )),
           Positioned(
-            bottom: height * .15,
+            bottom: height * .05,
+            top: height * .08,
             left: width * .05,
             right: width * .05,
             child: Column(
@@ -281,7 +282,7 @@ class _SingUpPageState extends State<SingUpPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Already have an account? ',
                       style: TextStyle(
                         fontSize: 14,
@@ -292,7 +293,7 @@ class _SingUpPageState extends State<SingUpPage> {
                     GestureDetector(
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const LoginPage())),
-                      child: Text(
+                      child: const Text(
                         'LogIn ',
                         style: TextStyle(
                           fontSize: 14,

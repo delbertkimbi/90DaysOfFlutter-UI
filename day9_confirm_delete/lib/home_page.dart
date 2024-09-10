@@ -10,13 +10,18 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
+        height: height,
+        width: width,
+        padding: EdgeInsets.symmetric(
+            horizontal: width * 0.01, vertical: height * 0.3),
         decoration: const BoxDecoration(
             image: DecorationImage(
           alignment: Alignment.center,
+          fit: BoxFit.cover,
           image: AssetImage('assets/bg.png'),
         )),
         child: Center(
@@ -32,21 +37,78 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Image.asset('assets/cancel.png'),
+                    Image.asset('assets/cancel.png', height: height * 0.04),
                   ],
                 ),
                 Center(
-                  child: Image.asset('assets/warning.png'),
+                  child:
+                      Image.asset('assets/warning.png', height: height * 0.07),
                 ),
-                SizedBox(height: 20),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   'Are you sure you want to delete this file?',
-                  style: TextStyle(fontSize: 20),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
-                 SizedBox(height: 20),
-                Text('If yes click on confirm, all yout data will be gone'),
-                 SizedBox(height: 30),
-                 Row()
+                const SizedBox(height: 10),
+                const Text(
+                    'If yes click on confirm, all your\n data will be gone',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                    )),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: width * 0.11,
+                              vertical: height * 0.011),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 2,
+                              )),
+                          child: const Text(
+                            'Cancel',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: width * 0.11,
+                              vertical: height * 0.011),
+                          decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 2,
+                              )),
+                          child: const Text(
+                            'Confirm',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                            ),
+                          ),
+                        )
+                      ]),
+                )
               ],
             ),
           ),

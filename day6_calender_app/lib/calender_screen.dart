@@ -44,7 +44,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
         width: width,
         height: height,
         padding: EdgeInsets.symmetric(
-            horizontal: width * 0.12, vertical: height * .3),
+            horizontal: width * 0.07, vertical: height * .31),
         decoration: const BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
@@ -75,8 +75,8 @@ class _CalenderScreenState extends State<CalenderScreen> {
                       'July, 2024',
                       style: GoogleFonts.montserrat(
                         color: const Color(0xffF07EF8),
-                        fontSize: width * 0.038,
-                        fontWeight: FontWeight.w600,
+                        fontSize: width * 0.04,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     Icon(
@@ -122,7 +122,6 @@ class _CalenderScreenState extends State<CalenderScreen> {
                           height: width * 0.09,
                           margin: const EdgeInsets.symmetric(
                             horizontal: 4,
-                            vertical: 4,
                           ),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
